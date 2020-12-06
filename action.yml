@@ -1,0 +1,18 @@
+author: Max Romanyuta
+name: Simple Dotenv
+description: This action will read the .env file and add variables to GITHUB_ENV
+branding:
+  icon: box
+  color: white
+inputs:
+  path:
+    description: The path to the folder where the .env file is located
+    required: false
+    default: './'
+  mode:
+    description: The mode for load the .env file
+    required: false
+    default: ''
+runs:
+  using: node12
+  main: ./dist/index.js
