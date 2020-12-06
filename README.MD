@@ -12,8 +12,8 @@
 - name: Some other action
   run: |
     echo "Variable 1: ${{ env.VARIABLE_1 }}"
-    echo "Variable 2: ${{ env.VARIABLE_1 }}"
-    echo "Variable 3: ${{ env.VARIABLE_1 }}"
+    echo "Variable 2: ${{ env.VARIABLE_2 }}"
+    echo "Variable 3: ${{ env.VARIABLE_3 }}"
 ```
 
 ## ✨ Features
@@ -38,4 +38,4 @@ If you need to load a `.env` file for a specific mode, you should specify the `m
 
 Thus, specifying `mode: test` will read the `.env.test` file. `mode: development` will read `.env.development` and so on.
 
-After reading and parsing the variables from the `.env` file, we write them to `GITHUB_ENV`.
+After reading and parsing the variables from the `.env` file, it writes them to `GITHUB_ENV`.
