@@ -6,7 +6,7 @@
 - name: Load .env file
   uses: xom9ikk/dotenv@v1
   with:
-    folder: custom/path/to/folder/with/env
+    path: custom/path/to/folder/with/env
     mode: development
 
 - name: Some other action
@@ -25,7 +25,7 @@
 
 | property | isRequired | default | comment                                                                                                      | example
 |----------|:----------:|:-------:|----------------------------------------------------|:--------:
-| `folder` |     x      | ./      | path to the folder where the .env file is located. | ./custom/path/to/folder/with/env
+| `path` |     x      | ./      | path to the folder where the .env file is located. | ./custom/path/to/folder/with/env
 | `mode`   |     x      | `empty` | mode for load the .env file.                       | test
 
 ## 🧩 Notes
