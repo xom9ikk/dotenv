@@ -4,7 +4,7 @@
 ## 🔥 Usage
 ```yaml
 - name: Load .env file
-  uses: xom9ikk/dotenv@v1
+  uses: xom9ikk/dotenv@v1.0.2
   with:
     path: custom/path/to/folder/with/env
     mode: development
