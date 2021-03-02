@@ -30,7 +30,7 @@
 
 ## 🧩 Notes
 This action is built on top of the [dotenv](https://github.com/motdotla/dotenv) library.
-When starting the action, the file is read from the target folder in the `folder` property and using the mode specified in` mode`.
+When starting the action, the file is read from the target folder in the `path` property and using the mode specified in` mode`.
 
 The name of the `.env` file depends on the startup mode.
 If you do not specify the launch mode, the `.env` file will be loaded.

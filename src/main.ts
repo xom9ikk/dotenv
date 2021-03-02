@@ -14,19 +14,19 @@ import {
 } from './interfaces';
 
 const getInput: IGetInput = () => {
-  const folder = core.getInput('folder') || '.';
+  const pathToFolder = core.getInput('path') || '.';
   const mode = core.getInput('mode');
 
   return {
-    folder,
+    pathToFolder,
     mode,
   };
 };
 
-const generatePathToFile: IGeneratePathToFile = (folder, mode) => {
+const generatePathToFile: IGeneratePathToFile = (pathToFolder, mode) => {
   const normalizedMode = mode ? `.${mode}` : '';
   const filename = `.env${normalizedMode}`;
-  return path.join(folder, filename);
+  return path.join(pathToFolder, filename);
 };
 
 const readFile: IReadFile = async (filePath) => new Promise<string>((
@@ -49,10 +49,10 @@ const exportEnvVariables: IExportEnvVariables = (
 ) => Object.entries(env).forEach(setEnvVariable);
 
 const main: IMain = async ({
-  folder,
+  pathToFolder,
   mode,
 }) => {
-  const filePath = generatePathToFile(folder, mode);
+  const filePath = generatePathToFile(pathToFolder, mode);
   const content = await readFile(filePath);
   const env = parseEnv(content);
   exportEnvVariables(env);

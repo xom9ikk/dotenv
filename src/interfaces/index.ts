@@ -1,7 +1,7 @@
 import { DotenvParseOutput } from 'dotenv';
 
 export interface IInput {
-  folder?: string,
+  pathToFolder?: string,
   mode?: string,
 }
 
