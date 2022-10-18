@@ -1,10 +1,10 @@
-# dotenv@v1
+# dotenv@v2
 > GitHub Action to read .env file and add variables to GITHUB_ENV
 
 ## 🔥 Usage
 ```yaml
 - name: Load .env file
-  uses: xom9ikk/dotenv@v1.0.2
+  uses: xom9ikk/dotenv@v2
   with:
     path: custom/path/to/folder/with/env
     mode: development
