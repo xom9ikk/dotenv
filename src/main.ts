@@ -16,10 +16,12 @@ import {
 const getInput: IGetInput = () => {
   const pathToFolder = core.getInput('path') || '.';
   const mode = core.getInput('mode');
+  const loadMode = core.getInput('load-mode') || 'strict';
 
   return {
     pathToFolder,
     mode,
+    loadMode,
   };
 };
 
@@ -29,11 +31,13 @@ const generatePathToFile: IGeneratePathToFile = (pathToFolder, mode) => {
   return path.join(pathToFolder, filename);
 };
 
-const readFile: IReadFile = async (filePath) => new Promise<string>((
+const readFile: IReadFile = async (filePath, loadMode) => new Promise<string>((
   resolve, reject,
 ) => fs.readFile(filePath, 'utf8', (error, data) => {
-  if (error) {
+  if (error && loadMode !== 'skip') {
     return reject(error);
+  } if (error && loadMode === 'skip') {
+    return resolve('');
   }
   return resolve(data);
 }));
@@ -51,9 +55,10 @@ const exportEnvVariables: IExportEnvVariables = (
 const main: IMain = async ({
   pathToFolder,
   mode,
+  loadMode,
 }) => {
   const filePath = generatePathToFile(pathToFolder, mode);
-  const content = await readFile(filePath);
+  const content = await readFile(filePath, loadMode);
   const env = parseEnv(content);
   exportEnvVariables(env);
 };
