@@ -8,6 +8,7 @@
   with:
     path: custom/path/to/folder/with/env
     mode: development
+    load-mode: skip
 
 - name: Some other action
   run: |
@@ -27,6 +28,7 @@
 |----------|:----------:|:-------:|----------------------------------------------------|:--------:
 | `path` |     x      | ./      | path to the folder where the .env file is located. | ./custom/path/to/folder/with/env
 | `mode`   |     x      | `empty` | mode for load the .env file.                       | test
+| `load-mode`   |     x      | `strict` | when `skip`, an empty .env file is returned in case no file is found.                       | `skip` or `strict`
 
 ## 🧩 Notes
 This action is built on top of the [dotenv](https://github.com/motdotla/dotenv) library.
