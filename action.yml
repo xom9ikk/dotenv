@@ -13,6 +13,10 @@ inputs:
     description: The mode for load the .env file
     required: false
     default: ''
+  load-mode:
+    description: Sets whether the program should fail when the .env file is not present (strict) or continue (skip)
+    required: false
+    default: 'strict'
 runs:
   using: node16
   main: ./dist/index.js
