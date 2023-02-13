@@ -1,5 +1,6 @@
 import * as core from '@actions/core';
 import * as dotenv from 'dotenv';
+import * as dotenvExpand from 'dotenv-expand';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -42,7 +43,9 @@ const readFile: IReadFile = async (filePath, loadMode) => new Promise<string>((
   return resolve(data);
 }));
 
-const parseEnv: IParseEnv = (content) => dotenv.parse(content);
+const parseEnv: IParseEnv = (
+  content,
+) => dotenvExpand.expand({ parsed: dotenv.parse(content) }).parsed;
 
 const setEnvVariable: ISetEnvVariable = ([key, value]) => {
   core.exportVariable(key, value);
