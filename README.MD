@@ -21,6 +21,7 @@
 * ⛳ ability to specify the path to the folder;
 * 🎨 setup mode;
 * 💎 simple API;
+* 🍃 variable expansion;
 
 ## 💡 Input
 
@@ -31,7 +32,7 @@
 | `load-mode` |    x    | `strict` | sets whether the program should fail when the .env file is not present (`strict`) or continue (`skip`) | skip|
 
 ## 🧩 Notes
-This action is built on top of the [dotenv](https://github.com/motdotla/dotenv) library.
+This action is built on top of the [dotenv](https://github.com/motdotla/dotenv) and [dotenv-expand](https://github.com/motdotla/dotenv-expand) libraries.
 When starting the action, the file is read from the target folder in the `path` property and using the mode specified in` mode`.
 
 The name of the `.env` file depends on the startup mode.
@@ -43,3 +44,9 @@ Thus, specifying `mode: test` will read the `.env.test` file. `mode: development
 After reading and parsing the variables from the `.env` file, it writes them to `GITHUB_ENV`.
 
 If the action should continue when the .env file is not present, the optional `load-mode` flag can be set to `skip`. This can be particularly, for example, useful in secondary branches, where some aspects of the action may not be relevant.
+
+Action also supports variable expansion, e.g.
+```bash
+PASSWORD="s1mpl3"
+DB_PASS=$PASSWORD
+```
